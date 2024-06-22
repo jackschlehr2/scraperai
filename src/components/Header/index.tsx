@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Row, Col, Drawer } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import Container from "../../common/Container";
-import { SvgIcon } from "../../common/SvgIcon";
 import { Button } from "../../common/Button";
 import {
   HeaderSection,
@@ -15,6 +14,7 @@ import {
   Outline,
   Span,
 } from "./styles";
+import { Link } from "react-router-dom";
 
 const Header = ({ t }: { t: TFunction }) => {
   const [visible, setVisibility] = useState(false);
@@ -24,31 +24,33 @@ const Header = ({ t }: { t: TFunction }) => {
   };
 
   const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      const element = document.getElementById(id) as HTMLDivElement;
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-      setVisibility(false);
-    };
+    
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <Span>{t("About")}</Span>
+        <CustomNavLinkSmall>
+          <Link to="/product">
+            <Span>{t("Product")}</Span>
+          </Link>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Mission")}</Span>
+        <CustomNavLinkSmall>
+          <Link to="/pricing">
+            <Span>{t("Pricing")}</Span>
+          </Link>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <Span>{t("Product")}</Span>
+        <CustomNavLinkSmall>
+          <Link to="/account">
+            <Span>{t("Account")}</Span>
+          </Link>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall
-          style={{ width: "180px" }}
-          onClick={() => scrollTo("contact")}
-        >
-          <Span>
-            <Button>{t("Contact")}</Button>
-          </Span>
+        <CustomNavLinkSmall>
+          <Link to="/scrape">
+            <Span>{t("Scrape")}</Span>
+          </Link>
+        </CustomNavLinkSmall>
+        <CustomNavLinkSmall>
+          <Link to="/query">
+            <Span>{t("Query")}</Span>
+          </Link>
         </CustomNavLinkSmall>
       </>
     );
@@ -59,7 +61,8 @@ const Header = ({ t }: { t: TFunction }) => {
       <Container>
         <Row justify="space-between">
           <LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" width="101px" height="64px" />
+            {/* <SvgIcon src="logo.svg" width="101px" height="64px" /> */}
+            ScraperAI
           </LogoContainer>
           <NotHidden>
             <MenuItem />
