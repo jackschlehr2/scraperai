@@ -1,6 +1,9 @@
 import { defineBackend } from '@aws-amplify/backend';
 import { auth } from './auth/resource'
 
-defineBackend({
+const backend = defineBackend({
     auth
 });
+
+const { cfnUserPool } = backend.auth.resources.cfnResources
+
