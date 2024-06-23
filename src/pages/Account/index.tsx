@@ -1,4 +1,5 @@
 import { Layout, Typography, Row, Col, Card, Statistic, Button, Alert } from 'antd';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 
 const { Header, Content, Footer } = Layout;
@@ -23,6 +24,7 @@ const Home = () => {
     };
   
   return (
+    <Authenticator>
     <Layout className="layout">
     <Header style={{ background: '#1890ff', padding: '0 20px' }}>
       <div className="logo" />
@@ -92,6 +94,7 @@ const Home = () => {
       </div>
     </Content>
   </Layout>
+  </Authenticator>
   );
 };
 
