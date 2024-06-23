@@ -20,6 +20,11 @@
     ],
     "EmailVerificationMessage": "The verification code to your new account is {####}",
     "EmailVerificationSubject": "Verify your new account",
+    "LambdaConfig": {
+     "PreAuthentication": {
+      "Ref": "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn"
+     }
+    },
     "Policies": {
      "PasswordPolicy": {
       "MinimumLength": 8,
@@ -64,6 +69,25 @@
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/UserPool/Resource"
+   }
+  },
+  "amplifyAuthUserPoolPreAuthenticationCognito4931C5BA": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Ref": "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn"
+    },
+    "Principal": "cognito-idp.amazonaws.com",
+    "SourceArn": {
+     "Fn::GetAtt": [
+      "amplifyAuthUserPool4BA7F805",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/UserPool/PreAuthenticationCognito"
    }
   },
   "amplifyAuthUserPoolAppClient2626C6F8": {
@@ -274,10 +298,311 @@
     "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/IdentityPoolRoleAttachment"
    }
   },
+  "amplifyAuthNOPAYGroupRole43C2845C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "cognito-identity.amazonaws.com:aud": {
+          "Ref": "amplifyAuthIdentityPool3FDE84CC"
+         }
+        },
+        "ForAnyValue:StringLike": {
+         "cognito-identity.amazonaws.com:amr": "authenticated"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": "cognito-identity.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyAuth"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/NO_PAYGroupRole/Resource"
+   }
+  },
+  "amplifyAuthNOPAYGroupEDEEBD0C": {
+   "Type": "AWS::Cognito::UserPoolGroup",
+   "Properties": {
+    "GroupName": "NO_PAY",
+    "Precedence": 0,
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "amplifyAuthNOPAYGroupRole43C2845C",
+      "Arn"
+     ]
+    },
+    "UserPoolId": {
+     "Ref": "amplifyAuthUserPool4BA7F805"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/NO_PAYGroup"
+   }
+  },
+  "amplifyAuthFREETRIALGroupRole5ABB8FA9": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "cognito-identity.amazonaws.com:aud": {
+          "Ref": "amplifyAuthIdentityPool3FDE84CC"
+         }
+        },
+        "ForAnyValue:StringLike": {
+         "cognito-identity.amazonaws.com:amr": "authenticated"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": "cognito-identity.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyAuth"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/FREE_TRIALGroupRole/Resource"
+   }
+  },
+  "amplifyAuthFREETRIALGroup969633E2": {
+   "Type": "AWS::Cognito::UserPoolGroup",
+   "Properties": {
+    "GroupName": "FREE_TRIAL",
+    "Precedence": 1,
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "amplifyAuthFREETRIALGroupRole5ABB8FA9",
+      "Arn"
+     ]
+    },
+    "UserPoolId": {
+     "Ref": "amplifyAuthUserPool4BA7F805"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/FREE_TRIALGroup"
+   }
+  },
+  "amplifyAuthSTANDARDGroupRole6DE98A57": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "cognito-identity.amazonaws.com:aud": {
+          "Ref": "amplifyAuthIdentityPool3FDE84CC"
+         }
+        },
+        "ForAnyValue:StringLike": {
+         "cognito-identity.amazonaws.com:amr": "authenticated"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": "cognito-identity.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyAuth"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/STANDARDGroupRole/Resource"
+   }
+  },
+  "amplifyAuthSTANDARDGroupFAEB9786": {
+   "Type": "AWS::Cognito::UserPoolGroup",
+   "Properties": {
+    "GroupName": "STANDARD",
+    "Precedence": 2,
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "amplifyAuthSTANDARDGroupRole6DE98A57",
+      "Arn"
+     ]
+    },
+    "UserPoolId": {
+     "Ref": "amplifyAuthUserPool4BA7F805"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/STANDARDGroup"
+   }
+  },
+  "amplifyAuthPREMIUMGroupRole4F7D135C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "cognito-identity.amazonaws.com:aud": {
+          "Ref": "amplifyAuthIdentityPool3FDE84CC"
+         }
+        },
+        "ForAnyValue:StringLike": {
+         "cognito-identity.amazonaws.com:amr": "authenticated"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": "cognito-identity.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyAuth"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/PREMIUMGroupRole/Resource"
+   }
+  },
+  "amplifyAuthPREMIUMGroupA40FD6E8": {
+   "Type": "AWS::Cognito::UserPoolGroup",
+   "Properties": {
+    "GroupName": "PREMIUM",
+    "Precedence": 3,
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "amplifyAuthPREMIUMGroupRole4F7D135C",
+      "Arn"
+     ]
+    },
+    "UserPoolId": {
+     "Ref": "amplifyAuthUserPool4BA7F805"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/PREMIUMGroup"
+   }
+  },
+  "AMPLIFYAUTHUSERPOOLIDParameterCC466CA3": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Name": "/amplify/resource_reference/myapp/johnschlehr-sandbox-be444a68c4/AMPLIFY_AUTH_USERPOOL_ID",
+    "Tags": {
+     "amplify:deployment-type": "sandbox",
+     "created-by": "amplify"
+    },
+    "Type": "String",
+    "Value": {
+     "Ref": "amplifyAuthUserPool4BA7F805"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/AMPLIFY_AUTH_USERPOOL_IDParameter/Resource"
+   }
+  },
+  "userpoolAccess13FEE5419": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "cognito-idp:AdminAddUserToGroup",
+        "cognito-idp:AdminUpdateUserAttributes"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "amplifyAuthUserPool4BA7F805",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "userpoolAccess13FEE5419",
+    "Roles": [
+     {
+      "Ref": "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/userpoolAccess1/Resource"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02PQQvCMAyFf4v3LroheJadvIhMPMtso2brGlgzRUr/ux1jutP78l7CIwXk2x1sVvXbZ9q0maUbhCN6QXOWWrcqBdeg+eFIGMLFY39itqq8ux/PUFpCJ8vo7xxMApLPfLycK7a4l9T27JIZFdUdhNEcF0eNUVXoeej1ZC24ZGdIiF1Ujg1C49evooA8vdR4oqwfUk2HUE36BX7g4SjvAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12QQU/DMAyFfwv31LAKiTPqAXFBVSfOKEvM8JbEKHZBU5X/TrqqUHHy9/L8bMUt7O4f4O7Gfkvj/LkJdIDpBUXR79W6s6nG2+T4mEgZplfB3DMH072nX16hC4RJt9bfy7OvQHpZw1s9cMBHrds+4r/8U+bxs5hg48FbqEaPOZIIcTJkI0xzdA5ca8+B3GWWCxUjUnv2mikde5ttRMV89VdRihlQeMxuGbPhjpMnrZuKSewRTnL71bawq8c6CVGTx/qBiDAs9QeUDLfxSQEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/CDKMetadata/Default"
@@ -493,6 +818,14 @@
      ]
     }
    ]
+  }
+ },
+ "Parameters": {
+  "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn": {
+   "Type": "String"
+  },
+  "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref": {
+   "Type": "String"
   }
  },
  "Outputs": {

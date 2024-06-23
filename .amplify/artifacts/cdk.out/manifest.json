@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1793c751a1b3c51d32372fd7b8f92e80330bd050b5033e6d5eff3da30fd02165.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/90c3dfa6b24f4ad6731a5bee881dc10cf122259c82d60d84449fd1a28992f2a5.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -71,6 +71,12 @@
             "data": "amplifyAuthUserPool4BA7F805"
           }
         ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/UserPool/PreAuthenticationCognito": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthUserPoolPreAuthenticationCognito4931C5BA"
+          }
+        ],
         "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/UserPoolAppClient/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -101,6 +107,66 @@
             "data": "amplifyAuthIdentityPoolRoleAttachment045F17C8"
           }
         ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/NO_PAYGroupRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthNOPAYGroupRole43C2845C"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/NO_PAYGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthNOPAYGroupEDEEBD0C"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/FREE_TRIALGroupRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthFREETRIALGroupRole5ABB8FA9"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/FREE_TRIALGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthFREETRIALGroup969633E2"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/STANDARDGroupRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthSTANDARDGroupRole6DE98A57"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/STANDARDGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthSTANDARDGroupFAEB9786"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/PREMIUMGroupRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthPREMIUMGroupRole4F7D135C"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifyAuth/PREMIUMGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifyAuthPREMIUMGroupA40FD6E8"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/AMPLIFY_AUTH_USERPOOL_IDParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AMPLIFYAUTHUSERPOOLIDParameterCC466CA3"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/userpoolAccess1/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "userpoolAccess13FEE5419"
+          }
+        ],
         "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -111,6 +177,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/reference-to-amplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputs.amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/reference-to-amplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputs.amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifymyappjohnschlehrsandboxbe444a68c4functionNestedStackfunctionNestedStackResourceDA1B99F7Outputsamplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref"
           }
         ],
         "/amplify-myapp-johnschlehr-sandbox-be444a68c4/auth/amplifymyappjohnschlehrsandboxbe444a68c4authamplifyAuthUserPool44F8F3B2Ref": [
@@ -249,6 +327,66 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "oauthClientId"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/autoConfirmAddToGroup-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "autoConfirmAddToGrouplambdaServiceRoleF24F9E33"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/autoConfirmAddToGroup-lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "autoConfirmAddToGrouplambdaServiceRoleDefaultPolicy55B592EC"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/autoConfirmAddToGroup-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "autoConfirmAddToGrouplambda65379FB1"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Arn"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambdaServiceRole8B1B19A6Ref"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function/amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "amplifymyappjohnschlehrsandboxbe444a68c4functionautoConfirmAddToGrouplambda6173DEA6Ref"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/function.NestedStack/function.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "function1351588B"
+          }
+        ],
+        "/amplify-myapp-johnschlehr-sandbox-be444a68c4/definedFunctions": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "definedFunctions"
           }
         ],
         "/amplify-myapp-johnschlehr-sandbox-be444a68c4/CDKMetadata/Default": [
