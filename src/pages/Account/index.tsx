@@ -1,5 +1,9 @@
 import { Layout, Typography, Row, Col, Card, Statistic, Button, Alert } from 'antd';
 import { Authenticator } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import outputs from "../../amplify_outputs.json";
+
+Amplify.configure(outputs);
 
 
 const { Header, Content, Footer } = Layout;
