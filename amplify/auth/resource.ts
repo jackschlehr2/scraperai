@@ -1,5 +1,5 @@
 import { defineAuth } from '@aws-amplify/backend';
-import { autoConfirmAddToGroup } from './autoConfirmAddToGroup/resource';
+import { preSignUp } from './autoConfirmAddToGroup/resource';
 
 export const auth = defineAuth({
   loginWith: {
@@ -7,11 +7,11 @@ export const auth = defineAuth({
   },
   groups: ["NO_PAY", "FREE_TRIAL", "STANDARD", "PREMIUM" ],
   triggers: {
-    "preAuthentication": autoConfirmAddToGroup
+    preSignUp,
   },
 
   access: (allow) => [
-    allow.resource(autoConfirmAddToGroup).to(["addUserToGroup", "updateUserAttributes"]),
+    allow.resource(preSignUp).to(["addUserToGroup", "updateUserAttributes"]),
   ],
 });
 
